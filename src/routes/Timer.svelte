@@ -6,11 +6,17 @@
   import "$lib/timer.css";
 
   // Variables
-
+  type TimerType =
+    | "Entire-class"
+    | "S1"
+    | "S2"
+    | "French"
+    | "German"
+    | "Positive";
   export let wantedTime: string;
   export let name: string; // E.g. Nightmare of all non-chemistry types
   export let description: string; // E. g. chemistry exam
-  export let name2: string;
+  export let timerType: TimerType;
   const theTime: Date = new Date(wantedTime);
   let currentTime: Date = new Date();
 
@@ -31,6 +37,7 @@
   const minutes = tweened(0, { duration: 300, easing: cubicOut });
   const seconds = tweened(0, { duration: 300, easing: cubicOut });
 
+  // Update time
   const updateTime = () => {
     currentTime = new Date();
 
@@ -61,12 +68,10 @@
 
   // Initial call to update the countdown
   updateTime();
-
-  // Set the correct form of time
 </script>
 
 {#if theTime.getTime() >= currentTime.getTime()}
-  <article>
+  <article class={timerType}>
     <div class="counting-parent">
       <div>
         <p>{$days.toFixed()}</p>
@@ -87,12 +92,8 @@
     </div>
     <div class="description-parent">
       <p class="name">
-        {name}
-        {#if name2 !== ""}
-          <br />
-          {name2}
-        {/if}
-        <br /><span class="description">{description}</span>
+        {@html name}
+        <br /><span class="description">{@html description}</span>
       </p>
     </div>
   </article>
