@@ -15,7 +15,7 @@
     | "Positive";
   export let wantedTime: string;
   export let name: string; // E.g. Nightmare of all non-chemistry types
-  export let description: string; // E. g. chemistry exam
+  export let description: string; // E.g. chemistry exam
   export let timerType: TimerType;
   const theTime: Date = new Date(wantedTime);
   let currentTime: Date = new Date();
