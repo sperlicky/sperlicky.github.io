@@ -44,6 +44,12 @@
     description="Projekt na Austrálii (S1)"
   />
   <Timer
+    timerType="Entire-class"
+    wantedTime="2024-10-21T14:36:54"
+    name="Demokracie nebo ne?"
+    description="Test z občanky."
+  />
+  <Timer
     timerType="S1"
     wantedTime="2024-10-24T08:00:06"
     name="(Non) defining relative-clauses! Enjoy, S1!"
