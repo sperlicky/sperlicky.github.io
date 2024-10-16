@@ -20,11 +20,6 @@
   const theTime: Date = new Date(wantedTime);
   let currentTime: Date = new Date();
 
-  let dayFormat: string;
-  let hourFormat: string;
-  let minuteFormat: string;
-  let secondFormat: string;
-
   // Time constants
   const msDay = 24 * 60 * 60 * 1000;
   const msHour = 60 * 60 * 1000;
