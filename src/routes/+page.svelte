@@ -7,18 +7,6 @@
 
 <main>
     <Timer
-            timerType="Entire-class"
-            wantedTime="2024-10-18T08:56:04"
-            name="nezapomeň na PODMÍNKY!!!"
-            description="Test z matematiky."
-    />
-    <Timer
-            timerType="French"
-            wantedTime="2024-10-23T10:55:27"
-            name="Another wednesday, another test for the French!"
-            description="Test z francouzštiny (zase)"
-    />
-    <Timer
             timerType="S1"
             wantedTime="2024-10-21T08:01:11"
             name="Projekt na (nejen) protinožce pro S1!"
@@ -30,6 +18,18 @@
             name="Demokracie nebo ne?"
             description="Test z občanky."
     />
+    <Timer
+            timerType="French"
+            wantedTime="2024-10-23T10:55:27"
+            name="Another wednesday, another test for the French!"
+            description="Test z francouzštiny (zase)"
+    />
+    <Timer
+            timerType="German"
+            wantedTime="2024-10-23T10:57:19"
+            name="Wie spät ist es?"
+            description="Test z němčiny."/>
+
     <Timer
             timerType="S1"
             wantedTime="2024-10-24T08:00:06"
