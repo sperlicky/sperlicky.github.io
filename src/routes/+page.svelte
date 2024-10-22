@@ -6,30 +6,19 @@
 <!-- Don't forget to sort the timers! -->
 
 <main>
-  <Timer
-    timerType="S1"
-    wantedTime="2024-10-21T08:01:11"
-    name="Projekt na (nejen) protinožce pro S1!"
-    description="Projekt na Austrálii (S1)"
-  />
-  <Timer
-    timerType="Entire-class"
-    wantedTime="2024-10-21T14:36:54"
-    name="Demokracie nebo ne?"
-    description="Test z občanky."
-  />
-  <Timer
+  <!-- <Timer
     timerType="S2"
-    wantedTime="2024-10-22T10:55:03"
+    wantedTime="1234-56-78"
     name="Thiokyseliny a další pro S2!"
     description="Test z názvosloví (S2)"
   />
   <Timer
     timerType="S1"
-    wantedTime="2024-10-22T11:50:27"
+    wantedTime="1234-56-78"
     name="Thiokyseliny a další pro S1!"
     description="Test z názvosloví (S1)"
-  />
+  /> -->
+  <!-- zjistit datum! -->
   <Timer
     timerType="French"
     wantedTime="2024-10-23T10:55:27"
@@ -54,6 +43,12 @@
     wantedTime="2024-11-06T10:56:29"
     name="Anotther test for the French!"
     description="Test z francouzštiny (zase)"
+  />
+  <Timer
+    timerType="Entire-class"
+    wantedTime="2024-11-08T08:55:54"
+    name="Finding x"
+    description="Čtvrtletka z matiky"
   />
   <Timer
     timerType="Positive"
