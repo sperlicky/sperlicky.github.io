@@ -1,0 +1,26 @@
+#!/bin/bash
+if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+cat <<EOF
+svelte-gh - Build a svelte website, and push it to GitHub.
+Syntax: svelte-gh [OPTIONS] [MESSAGE]
+
+Options:
+-h, --help          Print this message and quit
+
+If message is not specified, the commit will contain text "New build"
+EOF
+exit 0
+fi
+git push
+npm run build
+git checkout pages
+cp -r build/* .
+rm -rf build
+git add .
+if [[ $1 == "" ]]; then
+    git commit -am "New build"
+else
+    git commit -am $1
+fi &&
+git push
+git checkout main
