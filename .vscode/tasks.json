@@ -6,7 +6,7 @@
     {
       "label": "svelte-gh",
       "type": "shell",
-      "command": "./../svelte-gh"
+      "command": "svelte-gh"
     }
   ]
 }
