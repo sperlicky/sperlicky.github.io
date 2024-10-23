@@ -20,12 +20,6 @@
   /> -->
   <!-- zjistit datum! -->
   <Timer
-    timerType="French"
-    wantedTime="2024-10-23T10:55:27"
-    name="Another wednesday, another test for the French!"
-    description="Test z francouzštiny (zase)"
-  />
-  <Timer
     timerType="German"
     wantedTime="2024-10-23T10:57:19"
     name="Wie spät ist es?"
@@ -39,16 +33,22 @@
     description="Test z angličtiny (S1)"
   />
   <Timer
+    timerType="Entire-class"
+    wantedTime="2024-11-08T08:55:54"
+    name="Finding x"
+    description="Čtvrtletka z matiky"
+  />
+  <Timer
     timerType="French"
-    wantedTime="2024-11-06T10:56:29"
+    wantedTime="2024-11-13T10:56:29"
     name="Anotther test for the French!"
     description="Test z francouzštiny (zase)"
   />
   <Timer
     timerType="Entire-class"
-    wantedTime="2024-11-08T08:55:54"
-    name="Finding x"
-    description="Čtvrtletka z matiky"
+    wantedTime="2024-11-15T12:46:41"
+    name="Před naším letopočtem"
+    description="Test z dějepisu"
   />
   <Timer
     timerType="Positive"
