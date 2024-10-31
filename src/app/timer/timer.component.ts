@@ -1,22 +1,23 @@
-import { Component, Input, signal, WritableSignal } from '@angular/core';
-import { Tween, Easing } from '@tweenjs/tween.js';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import gsap from 'gsap';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-timer',
+  selector: 'Timer',
   standalone: true,
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.scss',
 })
-export class TimerComponent {
+export class TimerComponent implements OnInit, OnDestroy {
   @Input({ required: true, alias: 'type' }) timerType: TimerType =
     'Entire-class';
   @Input({ required: true }) name = '';
   @Input({ required: true }) description = '';
   @Input({ required: true, alias: 'time' }) wantedTime = '';
 
-  theTime = new Date(this.wantedTime);
-  currentTime: WritableSignal<Date> = signal(new Date());
+  theTime!: Date;
+  currentTime = new Date();
   interval!: ReturnType<typeof setInterval>;
 
   msDay = 24 * 60 * 60 * 1000;
@@ -24,29 +25,33 @@ export class TimerComponent {
   msMinute = 60 * 1000;
   msSecond = 1000;
 
-  time = new Tween({ days: 0, hours: 0, minutes: 0, secons: 0 })
-    .easing(Easing.Cubic.Out)
-    .start();
+  timeValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   updateTime = () => {
-    this.currentTime.set(new Date());
-    const timeDiff = this.theTime.getTime() - this.currentTime().getTime();
-
+    this.currentTime = new Date();
+    const timeDiff = this.theTime.getTime() - this.currentTime.getTime();
     if (timeDiff <= 0) {
       clearInterval(this.interval);
-      this.time.to({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      this.timeValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
       return;
     }
 
-    this.time.to({
-      days: Math.floor(timeDiff / this.msDay),
-      hours: Math.floor((timeDiff % this.msDay) / this.msHour),
-      minutes: Math.floor((timeDiff % this.msHour) / this.msMinute),
+    gsap.to(this.timeValues, {
       seconds: Math.floor((timeDiff % this.msMinute) / this.msSecond),
+      minutes: Math.floor((timeDiff % this.msHour) / this.msMinute),
+      hours: Math.floor((timeDiff % this.msDay) / this.msHour),
+      days: Math.floor(timeDiff / this.msDay),
+      ease: 'power2.out',
     });
   };
   ngOnInit(): void {
     this.interval = setInterval(this.updateTime, 1000);
+    console.log(this.wantedTime);
+    console.log(this.theTime);
+    this.theTime = new Date(this.wantedTime);
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }
 
