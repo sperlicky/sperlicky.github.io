@@ -1,0 +1,26 @@
+<article [class]="timerType">
+  <div class="counting-parent">
+    <div>
+      <p>{$days.toFixed()}</p>
+      <p class="label">d</p>
+    </div>
+    <div>
+      <p>{$hours.toFixed()}</p>
+      <p class="label">h</p>
+    </div>
+    <div>
+      <p>{$minutes.toFixed()}</p>
+      <p class="label">min</p>
+    </div>
+    <div>
+      <p>{$seconds.toFixed()}</p>
+      <p class="label">s</p>
+    </div>
+  </div>
+  <div class="description-parent">
+    <p class="name">
+      {@html name}
+      <br /><span class="description">{@html description}</span>
+    </p>
+  </div>
+</article>
