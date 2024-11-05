@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'Timer',
+  selector: 'app-timer',
   standalone: true,
   imports: [DecimalPipe],
   templateUrl: './timer.component.html',
