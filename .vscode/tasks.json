@@ -37,6 +37,11 @@
           }
         }
       }
+    },
+    {
+      "type": "shell",
+      "command": "ng deploy",
+      "label": "deploy"
     }
   ]
 }
