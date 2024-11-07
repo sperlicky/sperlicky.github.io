@@ -74,6 +74,18 @@ span.description {
   color: $desc-font;
 }
 
+footer {
+  &,
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: $desc-font;
+  }
+  text-align: center;
+  margin-top: 1em;
+}
+
 /* Article classes */
 
 .S1 {
