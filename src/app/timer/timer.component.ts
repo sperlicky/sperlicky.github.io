@@ -19,6 +19,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   theTime!: Date;
   currentTime = new Date();
   interval!: ReturnType<typeof setInterval>;
+  shouldBeHidden = false;
 
   msDay = 24 * 60 * 60 * 1000;
   msHour = 60 * 60 * 1000;
@@ -33,6 +34,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     if (timeDiff <= 0) {
       clearInterval(this.interval);
       this.timeValues = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      this.shouldBeHidden = true;
       return;
     }
 

@@ -1,4 +1,4 @@
-<article [class]="timerType">
+<article [class]="timerType" [class.timer--hidden]="shouldBeHidden">
   <div class="counting-parent">
     <div>
       <p>{{ timeValues.days | number : "1.0-0" }}</p>
