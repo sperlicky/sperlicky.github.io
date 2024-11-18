@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
-import gsap from 'gsap';
 import {DecimalPipe} from '@angular/common';
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: 'app-timer',
@@ -8,6 +8,20 @@ import {DecimalPipe} from '@angular/common';
     imports: [DecimalPipe],
     templateUrl: './timer.component.html',
     styleUrl: './timer.component.scss',
+    animations: [
+        trigger('flipAnimation', [
+            transition(':increment', [
+                animate("0.2s ease-out", style({transform: "translateY(0.5rem)", opacity: 0})),
+                style({transform: 'translateY(-1rem)'}),
+                animate('0.2s ease-out', style({transform: 'translateY(0)', opacity: 1})),
+            ]),
+            transition(':decrement', [
+                animate("0.2s ease-out", style({transform: "translateY(0.5rem)", opacity: 0})),
+                style({transform: 'translateY(-1rem)'}),
+                animate('0.2s ease-out', style({transform: 'translateY(0)', opacity: 1})),
+            ]),
+        ]),
+    ]
 })
 export class TimerComponent implements OnInit, OnDestroy {
     @Input({required: true, alias: 'type'}) timerType: TimerType =
@@ -26,14 +40,16 @@ export class TimerComponent implements OnInit, OnDestroy {
     msMinute = 60 * 1000;
     msSecond = 1000;
 
-    timeValues = {days: 0, hours: 0, minutes: 0, seconds: 0};
+    technicalTimeValues = {days: 0, hours: 0, minutes: 0, seconds: 0};
+    timeValues = {days: 0, hours: 0, minutes: 0, seconds: 0}
+
 
     updateTime = () => {
         this.currentTime = new Date();
         const timeDiff = this.theTime.getTime() - this.currentTime.getTime();
         if (timeDiff <= 0) {
             clearInterval(this.interval);
-            this.timeValues = {days: 0, hours: 0, minutes: 0, seconds: 0};
+            this.technicalTimeValues = {days: 0, hours: 0, minutes: 0, seconds: 0};
             this.shouldBeHidden = true;
             return;
         }
@@ -41,14 +57,20 @@ export class TimerComponent implements OnInit, OnDestroy {
     };
 
     private updateTimeVariables = (timeDiff: number) => {
-        gsap.to(this.timeValues, {
+        this.technicalTimeValues = {
             seconds: Math.floor((timeDiff % this.msMinute) / this.msSecond),
             minutes: Math.floor((timeDiff % this.msHour) / this.msMinute),
             hours: Math.floor((timeDiff % this.msDay) / this.msHour),
             days: Math.floor(timeDiff / this.msDay),
-            duration: 0.2,
-            ease: 'power2.out',
-        });
+        }
+        setTimeout(() => {
+            this.timeValues = {
+                seconds: Math.floor((timeDiff % this.msMinute) / this.msSecond),
+                minutes: Math.floor((timeDiff % this.msHour) / this.msMinute),
+                hours: Math.floor((timeDiff % this.msDay) / this.msHour),
+                days: Math.floor(timeDiff / this.msDay),
+            }
+        }, 200)
     }
 
     ngOnInit(): void {
@@ -59,7 +81,7 @@ export class TimerComponent implements OnInit, OnDestroy {
             this.timeValues = {days: 0, hours: 0, minutes: 0, seconds: 0};
         } else {
             this.currentTime = new Date();
-            this.updateTimeVariables(timeDiff);
+            setTimeout(() => this.updateTimeVariables(timeDiff), 100)
             this.interval = setInterval(this.updateTime, 1000);
         }
     }
