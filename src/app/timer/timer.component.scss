@@ -1,5 +1,13 @@
 @import "./../../styles.scss";
 
+@mixin center($text-center) {
+  @if ($text-center == true) {
+    text-align: center;
+  }
+  align-items: center;
+  justify-content: center;
+}
+
 .timer--hidden {
   display: none;
 }
@@ -20,8 +28,7 @@ article {
 
 .counting-parent {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center(false);
   overflow: hidden;
 
   & > div {
@@ -30,9 +37,7 @@ article {
     margin: 0.5em;
     min-width: 3em;
     min-height: 3em;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    @include center(true);
     border-radius: 1rem;
     background-color: $main-font;
     font-size: 2em;
@@ -50,10 +55,7 @@ article {
 }
 
 div.description-parent {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  @include center(true);
 
   & > p {
     margin: 0;
