@@ -4,10 +4,6 @@
   display: none;
 }
 
-.timer__times {
-  background: none;
-}
-
 article {
   display: grid;
   grid-template-rows: 1.5fr 1fr;
@@ -47,6 +43,9 @@ article {
     margin-bottom: 0;
     color: $art-bck;
     background-color: $main-font;
+  }
+  .timer__times {
+    background: none;
   }
 }
 
