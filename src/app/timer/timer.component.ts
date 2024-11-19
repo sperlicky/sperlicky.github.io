@@ -11,13 +11,13 @@ import {animate, style, transition, trigger} from "@angular/animations";
     animations: [
         trigger('flipAnimation', [
             transition(':increment', [
-                animate("0.2s ease-out", style({transform: "translateY(0.5rem)", opacity: 0})),
-                style({transform: 'translateY(-1rem)'}),
+                animate("0.2s ease-out", style({transform: "translateY(0.5em)", opacity: 0})),
+                style({transform: 'translateY(-1em)'}),
                 animate('0.2s ease-out', style({transform: 'translateY(0)', opacity: 1})),
             ]),
             transition(':decrement', [
-                animate("0.2s ease-out", style({transform: "translateY(0.5rem)", opacity: 0})),
-                style({transform: 'translateY(-1rem)'}),
+                animate("0.2s ease-out", style({transform: "translateY(0.5em)", opacity: 0})),
+                style({transform: 'translateY(-1em)'}),
                 animate('0.2s ease-out', style({transform: 'translateY(0)', opacity: 1})),
             ]),
         ]),

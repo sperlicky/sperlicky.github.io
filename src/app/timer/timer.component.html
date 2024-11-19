@@ -1,19 +1,23 @@
 <article [class]="timerType" [class.timer--hidden]="shouldBeHidden">
     <div class="counting-parent">
         <div>
-            <p [@flipAnimation]="technicalTimeValues.days">{{ timeValues.days | number: '1.0-0' }}</p>
+            <p [@flipAnimation]="technicalTimeValues.days"
+               class="timer__times">{{ timeValues.days | number: '1.0-0' }}</p>
             <p class="label">d</p>
         </div>
         <div>
-            <p [@flipAnimation]="technicalTimeValues.hours">{{ timeValues.hours | number: '1.0-0' }}</p>
+            <p [@flipAnimation]="technicalTimeValues.hours"
+               class="timer__times">{{ timeValues.hours | number: '1.0-0' }}</p>
             <p class="label">h</p>
         </div>
         <div>
-            <p [@flipAnimation]="technicalTimeValues.minutes">{{ timeValues.minutes | number: '1.0-0' }}</p>
+            <p [@flipAnimation]="technicalTimeValues.minutes"
+               class="timer__times">{{ timeValues.minutes | number: '1.0-0' }}</p>
             <p class="label">min</p>
         </div>
         <div>
-            <p [@flipAnimation]="technicalTimeValues.seconds">{{ timeValues.seconds | number: '1.0-0' }}</p>
+            <p [@flipAnimation]="technicalTimeValues.seconds"
+               class="timer__times">{{ timeValues.seconds | number: '1.0-0' }}</p>
             <p class="label">s</p>
         </div>
     </div>
