@@ -29,7 +29,6 @@ article {
 .counting-parent {
   display: flex;
   @include center(false);
-  overflow: hidden;
 
   & > div {
     display: flex;
@@ -41,6 +40,7 @@ article {
     border-radius: 1rem;
     background-color: $main-font;
     font-size: 2em;
+    overflow: hidden;
   }
 
   p {
@@ -48,9 +48,6 @@ article {
     margin-bottom: 0;
     color: $art-bck;
     background-color: $main-font;
-  }
-  .timer__times {
-    background: none;
   }
 }
 
