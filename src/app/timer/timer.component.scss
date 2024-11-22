@@ -92,11 +92,13 @@ span.description {
 @media screen and (max-width: 560px) and (min-width: 405px) {
   .counting-parent {
     font-size: 0.7rem;
+    max-width: 100svw;
   }
 }
 
 @media screen and (max-width: 404px) {
   .counting-parent {
     font-size: 0.6rem;
+    max-width: 100svw;
   }
 }
