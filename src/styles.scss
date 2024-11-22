@@ -24,6 +24,9 @@ main {
 }
 
 footer {
+  text-align: center;
+  margin-top: 1em;
+
   &,
   a,
   a:hover,
@@ -31,7 +34,4 @@ footer {
   a:visited {
     color: $desc-font;
   }
-
-  text-align: center;
-  margin-top: 1em;
 }
