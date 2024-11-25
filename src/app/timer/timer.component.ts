@@ -36,10 +36,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ],
 })
 export class TimerComponent implements OnInit, OnDestroy {
-  timerType = input.required<TimerType>({ alias: 'type' });
-  name = input.required();
-  description = input.required();
-  wantedTime = input.required<string>({ alias: 'time' });
+  timerType = input<TimerType>('Entire-class', { alias: 'type' });
+  name = input('');
+  description = input('');
+  wantedTime = input<string>('2024-11-20', { alias: 'time' });
 
   theTime!: DateTime;
   currentTime = DateTime.now().setZone('Europe/Prague');
@@ -85,7 +85,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    this.theTime = DateTime.fromISO(this.wantedTime(), {
+    this.theTime = DateTime.fromISO(String(this.wantedTime()), {
       zone: 'Europe/Prague',
     });
     const eventIn = Duration.fromMillis(
