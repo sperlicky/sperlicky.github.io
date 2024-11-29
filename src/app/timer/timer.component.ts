@@ -1,7 +1,15 @@
-import { Component, OnInit, OnDestroy, input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { DateTime, Duration } from 'luxon';
 import { animate, style, transition, trigger } from '@angular/animations';
+
+type TimerType =
+  | 'Entire-class'
+  | 'S1'
+  | 'S2'
+  | 'French'
+  | 'German'
+  | 'Positive';
 
 @Component({
   selector: 'app-timer',
@@ -36,11 +44,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
   ],
 })
 export class TimerComponent implements OnInit, OnDestroy {
-  timerType = input<TimerType>('Entire-class', { alias: 'type' });
-  name = input('');
-  description = input('');
-  wantedTime = input<string>('2024-11-20', { alias: 'time' });
-
+  @Input({ required: true, alias: 'type' }) timer!: TimerType;
+  @Input({ required: true }) name!: string;
+  @Input({ required: true }) description!: string;
+  @Input({ required: true, alias: 'time' }) wantedTime: string = '2024-11-02';
   theTime!: DateTime;
   currentTime = DateTime.now().setZone('Europe/Prague');
   interval!: ReturnType<typeof setInterval>;
@@ -85,7 +92,12 @@ export class TimerComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    this.theTime = DateTime.fromISO(String(this.wantedTime()), {
+    if (!this.wantedTime || !DateTime.fromISO(this.wantedTime).isValid) {
+      throw new Error(
+        `Invalid or missing wantedTime input. Ensure it is an ISO 8601 string. wamtedTime is ${this.wantedTime}`,
+      );
+    }
+    this.theTime = DateTime.fromISO(this.wantedTime, {
       zone: 'Europe/Prague',
     });
     const eventIn = Duration.fromMillis(
@@ -105,11 +117,3 @@ export class TimerComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
   }
 }
-
-type TimerType =
-  | 'Entire-class'
-  | 'S1'
-  | 'S2'
-  | 'French'
-  | 'German'
-  | 'Positive';

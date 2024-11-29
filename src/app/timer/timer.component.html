@@ -1,4 +1,4 @@
-<article [class]="timerType()" [class.timer--hidden]="shouldBeHidden">
+<article [class]="timer" [class.timer--hidden]="shouldBeHidden">
   <div class="counting-parent">
     <div>
       <p [@flipAnimation]="technicalTimeValues.days" class="timer__times">
@@ -27,7 +27,7 @@
   </div>
   <div class="description-parent">
     <p class="name">
-      {{ name() }}<br /><span class="description">{{ description() }}</span>
+      {{ name }}<br /><span class="description">{{ description }}</span>
     </p>
   </div>
 </article>
